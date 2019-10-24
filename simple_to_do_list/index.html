@@ -1,0 +1,77 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>Simple To Do List</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <meta name="theme-color" content="#fafafa">
+	
+  
+  <script>
+	
+	  // Add item to the list when clicking Add button
+	  function newElement() {
+		  var li = document.createElement("li");
+		  var inputValue = document.getElementById("input").value;
+		  var t = document.createTextNode(inputValue);
+		  li.appendChild(t);
+		  
+		  // Error message if user tries to input empty field or text is too long 
+		  if (inputValue === "" || inputValue.length > 25) {
+			  alert("Error! Try again.")
+		  } else {
+		    document.getElementById("list").appendChild(li);
+		  }
+		    document.getElementById("input").value = "";
+		  
+		  // Add close button next to list item
+		  var span = document.createElement("SPAN");
+  		  var text = document.createTextNode("\u274C");
+  		  span.className = "close";
+  		  span.appendChild(text);
+  		  li.appendChild(span);
+		  
+		  // Click close button to hide list item
+	  	  var close = document.getElementsByClassName("close");
+  		  for (i = 0; i < close.length; i++) {
+    	  close[i].onclick = function() {
+      	  var div = this.parentElement;
+      	  div.style.display = "none";
+    		}
+  		  }
+	  	  }
+	  
+	  
+	  
+	  	  
+	</script>	
+</head>
+
+<body>
+  
+<div id="myDIV" class="header">
+	
+	<h1>Simple To Do List</h1>
+	
+	<!–– Text field where user types what they want to add on the list ––>
+	<input type="text" id="input" placeholder="What to do...">
+	
+	<!–– Button that adds the text to the list when clicking it ––>
+	<button onclick="newElement()">Add</button>
+	
+	</div>
+	
+	<ul id="list">
+	  
+	</ul> 
+  
+</body>
+</html>
